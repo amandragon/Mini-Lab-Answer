@@ -12,15 +12,11 @@ class Shelter
 		@client_list.push(new_client)
 	end
 
-	def add_animal(name,age,gender,species,mult_toys) #creating animals
-		new_animal=Animal.new(name, age, gender, species, mult_toys)
+	def add_animal(name,age,gender,species,mult_toys,adoption_status) #creating animals
+		new_animal=Animal.new(name, age, gender, species, mult_toys, adoption_status)
 		@animal_list.push(new_animal)
 	end
 
-	def delete_animal
-		@animal_list.delete("")
-		#remove an animal from the list
-	end
 
 	def display_animals
 		@animal_list.each do |key, value| 
@@ -42,7 +38,7 @@ puts "Welcome to Happi Tails! Type anything to get to our command list."
 
 choice=gets.chomp
 
-until choice==(1..6)
+until choice==("end")
 if choice !=(1..6)
 puts "Here are our options."
 puts "1) Display all animals"
@@ -58,11 +54,11 @@ end
 
 	if choice=="1"
 	puts "Here is the list of animals living at our shelter."
-	happi_tails.display_animals
+	puts "#{happi_tails.display_animals}"
 	end
 	if choice=="2"
 	puts "Here is the list of clients at our shelter."
-	happi_tails.display_clients
+	puts "#{happi_tails.display_clients}"
 	end
 	if choice=="3"
 	puts "Ok. Please give us your animal's information."
@@ -76,7 +72,8 @@ end
 	animal_species=gets.chomp
 	puts "Please list your animal's toys."
 	animal_toys=gets.chomp
-	happi_tails.add_animal(animal_name,animal_age,animal_gender,animal_species,animal_toys)
+	adoption_status="available"
+	happi_tails.add_animal(animal_name,animal_age,animal_gender,animal_species,animal_toys,adoption_status)
 	puts "Thank you! Your animal has been added to our list."
 	end
 
@@ -96,9 +93,11 @@ end
 	end
 
 	if choice=="5"
-	puts  "Ok. Here is our list of animals #{happi_tails.display_animals}. Type the name of the animal you want to adopt."
-	animal_name=gets.chomp
-	happi_tails.delete_animal
+	puts  "Ok. Here is our list of animals:"
+	puts "#{happi_tails.display_animals}."
+	puts "Please send us an email at happi_tails@woof.org and we'll get back to you shortly!"
+
+
 	#first display the animal list.
 	#figure out how to delete an animal from the animal list
 	#then display the animal list.
@@ -116,25 +115,15 @@ end
 	animal_species=gets.chomp
 	puts "Please list your animal's toys."
 	animal_toys=gets.chomp
-	happi_tails.add_animal(animal_name,animal_age,animal_gender,animal_species,animal_toys)
+	adoption_status="available"
+	happi_tails.add_animal(animal_name,animal_age,animal_gender,animal_species,animal_toys,adoption_status)
 	puts "Thank you! Your animal has been put up for adoption." 
 	end
 end
 
-if choice=="end"
-	end
 
 
-
-
-
-
-#figure out how to actually update the client list.
-
-
-
-
-
+#take out the keys and list them by number?
 
 
 
